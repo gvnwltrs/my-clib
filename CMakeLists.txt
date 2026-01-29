@@ -21,6 +21,7 @@ target_link_libraries(lp PUBLIC lp_core lp_port)
 # lp_core sources
 target_sources(lp_core PRIVATE
   src/core/lp_bytes.c
+  src/core/lp_fmt.c
 )
 
 # Tests (host)
@@ -33,4 +34,9 @@ add_test(NAME test_arena COMMAND test_arena)
 add_executable(test_bytes tests/test_bytes.c)
 target_link_libraries(test_bytes PRIVATE lp)
 add_test(NAME test_bytes COMMAND test_bytes)
+
+# Fmt
+add_executable(test_fmt tests/test_fmt.c)
+target_link_libraries(test_fmt PRIVATE lp)
+add_test(NAME test_fmt COMMAND test_fmt)
 
