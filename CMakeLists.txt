@@ -18,9 +18,19 @@ target_include_directories(lp_port PUBLIC include)
 add_library(lp STATIC)
 target_link_libraries(lp PUBLIC lp_core lp_port)
 
+# lp_core sources
+target_sources(lp_core PRIVATE
+  src/core/lp_bytes.c
+)
+
 # Tests (host)
 enable_testing()
 add_executable(test_arena tests/test_arena.c)
 target_link_libraries(test_arena PRIVATE lp)
 add_test(NAME test_arena COMMAND test_arena)
+
+# Bytes
+add_executable(test_bytes tests/test_bytes.c)
+target_link_libraries(test_bytes PRIVATE lp)
+add_test(NAME test_bytes COMMAND test_bytes)
 
